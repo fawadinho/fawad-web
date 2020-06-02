@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BudgetItemListComponent,
     BudgetItemCardComponent,
     EditItemModalComponent
+
   ],
   imports: [
     BrowserModule,
