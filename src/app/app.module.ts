@@ -12,6 +12,16 @@ import { BudgetItemCardComponent } from './budget-item-list/budget-item-card/bud
 import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { AuthComponent } from './users/auth/auth.component';
+import { ChangeRoleComponent } from './users/change-role/change-role.component';
+import { ConfirmEmailComponent } from './users/confirm-email/confirm-email.component';
+import { LoginComponent } from './users/login/login.component';
+import { ModelsComponent } from './users/models/models.component';
+import { RegisterComponent } from './users/register/register.component';
+import { ResetPasswordComponent } from './users/reset-password/reset-password.component';
+import { ResetYourPasswordComponent } from './users/reset-your-password/reset-your-password.component';
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +30,17 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddItemFormComponent,
     BudgetItemListComponent,
     BudgetItemCardComponent,
-    EditItemModalComponent
+    EditItemModalComponent,
+    AuthComponent,
+    ChangeRoleComponent,
+    ConfirmEmailComponent,
+    LoginComponent,
+    ModelsComponent,
+    RegisterComponent,
+    ResetPasswordComponent,
+    ResetYourPasswordComponent,
+    UserProfileComponent,
+    UsersListComponent
 
   ],
   imports: [

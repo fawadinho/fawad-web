@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: MainPageComponent },
   { path: 'BudgetCalculator', component: MainPageComponent },
-  { path: 'signup', component: MainPageComponent },
+  { path: 'users', component: MainPageComponent },
   { path: 'login', component: MainPageComponent },
   { path: 'investment', component: MainPageComponent },
 ];
