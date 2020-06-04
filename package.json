@@ -27,6 +27,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "bootstrap": "^4.5.0",
     "bulma": "^0.8.2",
+    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "jshint": "^2.11.1",
     "node-sass": "^4.14.1",
@@ -53,5 +54,17 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fawadinho/fawad-web.git"
+  },
+  "author": "Fawad Saadat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fawadinho/fawad-web/issues"
+  },
+  "homepage": "https://github.com/fawadinho/fawad-web#readme"
 }
