@@ -1,0 +1,39 @@
+<h1 style="text-align: center;">Posts</h1>
+<section>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Posts</label>
+      </div>
+
+      <input matInput type="text" name="title" ngModel required #title="ngModel">
+
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <textarea name="content"ngModel required class="textarea"></textarea>
+            <mat-error>Please Enter A Post</mat-error>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <!-- Left empty for spacing -->
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button type="submit" class="button is-primary">
+              Save Post
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</section>
