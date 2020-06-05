@@ -1,4 +1,4 @@
-import { MainPagePostsComponent } from './main-page-posts/main-page-posts.component';
+import { MainPagePostsComponent } from './posts/main-page-posts/main-page-posts.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

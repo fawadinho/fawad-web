@@ -1,3 +1,4 @@
+import { PostsService } from './posts/posts.service';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -26,7 +27,7 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MainPagePostsComponent } from './main-page-posts/main-page-posts.component';
+import { MainPagePostsComponent } from './posts/main-page-posts/main-page-posts.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
