@@ -1,5 +1,3 @@
-import { PostsService } from './posts/posts.service';
-import { PostListComponent } from './posts/post-list/post-list.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,21 +11,10 @@ import { BudgetItemCardComponent } from './budget-item-list/budget-item-card/bud
 import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 
-
 import { MatDialogModule } from '@angular/material/dialog';
-import { AuthComponent } from './users/auth/auth.component';
-import { ChangeRoleComponent } from './users/change-role/change-role.component';
-import { ConfirmEmailComponent } from './users/confirm-email/confirm-email.component';
+import { SignupComponent } from './users/signup/signup.component';
 import { LoginComponent } from './users/login/login.component';
-import { ModelsComponent } from './users/models/models.component';
-import { RegisterComponent } from './users/register/register.component';
-import { ResetPasswordComponent } from './users/reset-password/reset-password.component';
-import { ResetYourPasswordComponent } from './users/reset-your-password/reset-your-password.component';
-import { UserProfileComponent } from './users/user-profile/user-profile.component';
-import { UsersListComponent } from './users/users-list/users-list.component';
-import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MainPagePostsComponent } from './posts/main-page-posts/main-page-posts.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
@@ -39,21 +26,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BudgetItemListComponent,
     BudgetItemCardComponent,
     EditItemModalComponent,
-    AuthComponent,
-    ChangeRoleComponent,
-    ConfirmEmailComponent,
     LoginComponent,
-    ModelsComponent,
-    RegisterComponent,
-    ResetPasswordComponent,
-    ResetYourPasswordComponent,
-    UserProfileComponent,
-    UsersListComponent,
-    PostCreateComponent,
-    PostListComponent,
+    SignupComponent,
     NavbarComponent,
-    MainPagePostsComponent,
-
   ],
   imports: [
     BrowserModule,
