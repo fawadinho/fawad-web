@@ -1,5 +1,5 @@
-import { SignupComponent } from './users/signup/signup.component';
-import { LoginComponent } from './users/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { LoginComponent } from './user/login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

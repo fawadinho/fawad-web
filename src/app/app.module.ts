@@ -12,8 +12,8 @@ import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.compon
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { MatDialogModule } from '@angular/material/dialog';
-import { SignupComponent } from './users/signup/signup.component';
-import { LoginComponent } from './users/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { LoginComponent } from './user/login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
