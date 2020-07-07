@@ -10,15 +10,16 @@ import { HomeComponent } from './home/home.component';
 import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
-  { path: 'orders', component: OrdersComponent },
-  { path: 'order', children:[
-     { path:'', component: OrderComponent},
-     { path: 'edit/:id', component: OrdersComponent},
-  ]},
   { path: '', component: HomeComponent, canActivate: [AuthGuard]},
-  { path: 'about', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'orders', component: OrdersComponent },
+  { path: 'order', component: OrderComponent },
+
+ // { path: 'order', children:[
+ //   { path:'', component: OrderComponent},
+  //   { path: 'edit/:id', component: OrdersComponent},
+//  ]},
 ];
 
 @NgModule({
