@@ -1,31 +1,24 @@
+import { fakeBackendProvider } from './_helpers/test-backend';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './main-page/main-page.component';
-import { AddItemFormComponent } from './add-item-form/add-item-form.component';
-import { BudgetItemListComponent } from './budget-item-list/budget-item-list.component';
-import { BudgetItemCardComponent } from './budget-item-list/budget-item-card/budget-item-card.component';
-import { EditItemModalComponent } from './edit-item-modal/edit-item-modal.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { MatDialogModule } from '@angular/material/dialog';
-import { SignupComponent } from './user/signup/signup.component';
-import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
-    AddItemFormComponent,
-    BudgetItemListComponent,
-    BudgetItemCardComponent,
-    EditItemModalComponent,
     LoginComponent,
     SignupComponent,
     NavbarComponent,
@@ -37,12 +30,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     BrowserAnimationsModule,
     MatDialogModule,
     MatExpansionModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    HttpClientModule,
 
 
   ],
-  providers: [],
-  entryComponents: [EditItemModalComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    fakeBackendProvider
+  ],
+  entryComponents: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
