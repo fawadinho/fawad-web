@@ -51,7 +51,7 @@ import { OrderItemsComponent } from './orders/order-items/order-items.component'
     fakeBackendProvider
   ],
 
-  entryComponents: [],
+  entryComponents: [OrderItemsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
