@@ -1,5 +1,5 @@
 import { OrderItemsComponent } from './../order-items/order-items.component';
-import { MatDialogModule, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderItem } from './../../shared/order-item.model';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +12,7 @@ import { NgForm } from '@angular/forms';
 })
 export class OrderComponent implements OnInit {
   constructor(public service: OrderService,
-    private dialog:MatDialogModule
+    private dialog:MatDialog
     ) {}
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class OrderComponent implements OnInit {
       Total: 0,
     };
     this.service.orderItems=[];
-
+  }
 
     AddorEditOrderItem( orderItemIndex,OrderID ) {
       const dialogConfig = new MatDialogConfig();
@@ -42,4 +42,4 @@ export class OrderComponent implements OnInit {
 
     }
   }
-}
+
