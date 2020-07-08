@@ -1,9 +1,11 @@
+import { CustomerService } from './../../shared/customer.service';
 import { OrderItemsComponent } from './../order-items/order-items.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderItem } from './../../shared/order-item.model';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Customer } from 'src/app/shared/customer.model';
 
 @Component({
   selector: 'app-order',
@@ -11,18 +13,25 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  constructor(public service: OrderService, private dialog: MatDialog) {}
+  customerList: Customer[];
+  isValid: boolean = true;
 
+  constructor(
+    public service: OrderService,
+    private dialog: MatDialog,
+    private CustomerService: CustomerService
+  ) {}
 
-  onClickMe(event){
-    alert("Success! The Order is Sent to Supplier.");
-
+  onClickMe(event) {
+    alert('Success! The Order is Sent to Supplier.');
   }
-
-
 
   ngOnInit() {
     this.resetForm();
+
+    this.CustomerService.getCustomerList().then(
+      (res) => (this.customerList = res as Customer[])
+    );
   }
 
   resetForm(form?: NgForm) {
@@ -43,12 +52,29 @@ export class OrderComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.width = '50%';
     dialogConfig.data = { orderItemIndex, OrderID };
-    this.dialog.open(OrderItemsComponent, dialogConfig);
+    this.dialog
+      .open(OrderItemsComponent, dialogConfig)
+      .afterClosed()
+      .subscribe((res) => {
+        this.updateTotal();
+      });
   }
 
   onDeleteOrderItem(orderItemID: number, i: number) {
     this.service.orderItems.splice(i, 1);
+    this.updateTotal();
   }
 
+  updateTotal() {
+    this.service.formData.Total = this.service.orderItems.reduce(
+      (prev, curr) => {
+        return prev + curr.Total;
+      },
+      0
+    );
 
+    this.service.formData.Total = parseFloat(
+      this.service.formData.Total.toFixed(2)
+    );
+  }
 }
