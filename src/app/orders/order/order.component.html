@@ -2,7 +2,10 @@
   <div class="container">
     <div class="py-5 text-center">
       <h2>Order Uniforms Here</h2>
-      <p class="lead">Please Enter the Information Below to Order the Uniforms for the Customer</p>
+      <p class="lead">
+        Please Enter the Information Below to Order the Uniforms for the
+        Customer
+      </p>
     </div>
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
@@ -23,7 +26,12 @@
       <div class="col-md-8 order-md-1">
         <h1>Ordering Form</h1>
 
-        <form #form="ngForm" autocomplete="off" *ngIf="service.formData">
+        <form
+          #form="ngForm"
+          autocomplete="off"
+          *ngIf="service.formData"
+          (submit)="onSubmit(form)"
+        >
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -43,9 +51,16 @@
                   #CustomerID="ngModel"
                   [(ngModel)]="service.formData.CustomerID"
                   class="form-control"
+                  [class.is-invalid]="
+                    !isValid && service.formData.CustomerID == 0
+                  "
                 >
                   <option value="0">Select</option>
-                  <option *ngFor="let item of customerList" value="{{item.CustomerID}}">{{item.Name}}</option>
+                  <option
+                    *ngFor="let item of customerList"
+                    value="{{ item.CustomerID }}"
+                    >{{ item.Name }}</option
+                  >
                 </select>
               </div>
             </div>
@@ -82,35 +97,58 @@
               <th>Price</th>
               <th>Quantity</th>
               <th>Total</th>
-              <th><a class="btn btn-sm btn-success text-white" (click)="AddorEditOrderItem(null, service.formData.OrderID)"><i class="fa fa-plus"></i> Add Item </a></th>
+              <th>
+                <a
+                  class="btn btn-sm btn-success text-white"
+                  (click)="AddorEditOrderItem(null, service.formData.OrderID)"
+                  ><i class="fa fa-plus"></i> Add Item
+                </a>
+              </th>
             </thead>
             <tbody>
+              <tr
+                *ngIf="service.orderItems.length == 0"
+                [class.text-danger]="
+                  !isValid && service.formData.CustomerID == 0
+                "
+              >
+                <td class="font-italic text-center" colspan="5">
+                  No Item Selected
+                </td>
+              </tr>
 
-
-<tr *ngIf="service.orderItems.length==0">
-  <td class="font-italic text-center" colspan="5">
-    No Item Selected
-  </td>
-</tr>
-
-              <tr *ngFor="let item of service.orderItems;let i=index;">
+              <tr *ngFor="let item of service.orderItems; let i = index">
                 <td>{{ item.ItemName }}</td>
                 <td>{{ item.Price }}</td>
                 <td>{{ item.Quantity }}</td>
                 <td>{{ item.Total }}</td>
                 <td>
-                  <a class="btn btn-sm btn-info text-white" (click)="AddorEditOrderItem(null, service.formData.OrderID)"><i class="fa fa-edit"></i></a>
-                  <a class="btn btn-sm btn-danger text-white ml-1" (click)="onDeleteOrderItem(item.OrderItemID, service.formData.OrderID)"><i class="fa fa-trash"></i></a>
-
+                  <a
+                    class="btn btn-sm btn-info text-white"
+                    (click)="AddorEditOrderItem(null, service.formData.OrderID)"
+                    ><i class="fa fa-edit"></i
+                  ></a>
+                  <a
+                    class="btn btn-sm btn-danger text-white ml-1"
+                    (click)="
+                      onDeleteOrderItem(
+                        item.OrderItemID,
+                        service.formData.OrderID
+                      )
+                    "
+                    ><i class="fa fa-trash"></i
+                  ></a>
                 </td>
               </tr>
             </tbody>
           </table>
-          <div  class="form group">
-            <button type="submit" class="btn btn-dark" (click)="onClickMe($event)">
-              <i  class="fa fa-database"></i>
-              Submit
+          <div class="form group">
+            <button type="submit" class="btn btn-dark">
+              <i class="fa fa-database"></i> Submit
             </button>
+            <a class="btn btn-outline-dark ml-1" routerLink="/orders"
+              ><i class="fa fa-table"></i> View Orders</a
+            >
           </div>
         </form>
       </div>

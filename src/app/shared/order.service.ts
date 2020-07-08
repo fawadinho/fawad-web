@@ -1,14 +1,24 @@
 import { OrderItem } from './order-item.model';
 import { Order } from './order.model';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderService {
-  formData:Order;
-  orderItems:OrderItem[];
+  formData: Order;
+  orderItems: OrderItem[];
 
- 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
+  saveOrder() {
+    var body = {
+      ...this.formData,
+      OrderItems : this.orderItems,
+    };
+    return this.http.post(environment.apiURL + '/Order', body);
+  }
 }

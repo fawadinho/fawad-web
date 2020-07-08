@@ -1,7 +1,6 @@
 import { CustomerService } from './../../shared/customer.service';
 import { OrderItemsComponent } from './../order-items/order-items.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { OrderItem } from './../../shared/order-item.model';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -22,9 +21,6 @@ export class OrderComponent implements OnInit {
     private CustomerService: CustomerService
   ) {}
 
-  onClickMe(event) {
-    alert('Success! The Order is Sent to Supplier.');
-  }
 
   ngOnInit() {
     this.resetForm();
@@ -33,6 +29,7 @@ export class OrderComponent implements OnInit {
       (res) => (this.customerList = res as Customer[])
     );
   }
+
 
   resetForm(form?: NgForm) {
     if ((form = null)) form.resetForm();
@@ -77,4 +74,22 @@ export class OrderComponent implements OnInit {
       this.service.formData.Total.toFixed(2)
     );
   }
+
+  validateForm() {
+    this.isValid = true;
+    if (this.service.formData.CustomerID == 0) this.isValid = false;
+    else if (this.service.orderItems.length == 0) this.isValid = false;
+    return this.isValid;
+  }
+
+  onSubmit(form: NgForm) {
+    if (this.validateForm()) {
+      this.service.saveOrder().subscribe(res =>{
+        this.resetForm();
+      })
+    }
+  }
+
+
+
 }
