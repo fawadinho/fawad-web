@@ -2,7 +2,7 @@
   <div class="container">
     <div class="py-5 text-center">
       <h2>Order Uniforms Here</h2>
-      <p class="lead">Please Enter the information below to Order</p>
+      <p class="lead">Please Enter the Information Below to Order the Uniforms for the Customer</p>
     </div>
     <div class="row">
       <div class="col-md-4 order-md-2 mb-4">
@@ -21,7 +21,7 @@
       </div>
 
       <div class="col-md-8 order-md-1">
-        <h1>Billing address</h1>
+        <h1>Ordering Form</h1>
 
         <form #form="ngForm" autocomplete="off" *ngIf="service.formData">
           <div class="row">
@@ -105,9 +105,9 @@
               </tr>
             </tbody>
           </table>
-          <div class="form group">
-            <button type="submit" class="btn btn-dark">
-              <i class="fa fa-database"></i>
+          <div  class="form group">
+            <button type="submit" class="btn btn-dark" (click)="onClickMe($event)">
+              <i  class="fa fa-database"></i>
               Submit
             </button>
           </div>
