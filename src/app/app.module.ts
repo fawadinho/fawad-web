@@ -7,6 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ToastrModule } from 'ngx-toastr';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { SignupComponent } from './signup/signup.component';
@@ -39,6 +40,7 @@ import { OrderItemsComponent } from './orders/order-items/order-items.component'
     MatFormFieldModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ToastrModule.forRoot()
 
 
   ],

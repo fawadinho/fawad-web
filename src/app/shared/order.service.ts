@@ -21,4 +21,12 @@ export class OrderService {
     };
     return this.http.post(environment.apiURL + '/Order', body);
   }
+
+  getOrderList(){
+    return this.http.get(environment.apiURL+'/Order').toPromise();
+
+  }
+
+
+
 }

@@ -1,1 +1,32 @@
-<p>orders works!</p>
+<body class="bg-light">
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Order Uniforms Here</h2>
+      <p class="lead">
+        Please Enter the Information Below to Order the Uniforms for the
+        Customer
+      </p>
+
+
+<table class="table table-hover">
+  <thead class="thead-light">
+    <th>Order Number.</th>
+    <th>Customer</th>
+    <th>Payment Method</th>
+    <th>Total</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of orderList">
+      <th>{{item.OrderNo}}</th>
+      <th>{{item.Customer}}</th>
+      <th>{{item.PaymentMethod}}</th>
+      <th>{{item.Total}}</th>
+
+    </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+</body>
