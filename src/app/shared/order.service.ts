@@ -9,6 +9,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class OrderService {
+  getItemList() {
+    throw new Error("Method not implemented.");
+  }
   formData: Order;
   orderItems: OrderItem[];
 

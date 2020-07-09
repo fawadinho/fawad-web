@@ -19,6 +19,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { OrderItemsComponent } from './orders/order-items/order-items.component';
+import { InventoryComponent } from './inventory/inventory.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OrderItemsComponent } from './orders/order-items/order-items.component'
     OrdersComponent,
     OrderComponent,
     OrderItemsComponent,
+    InventoryComponent,
   ],
   imports: [
     BrowserModule,

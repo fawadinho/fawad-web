@@ -1,3 +1,4 @@
+import { InventoryComponent } from './inventory/inventory.component';
 import { OrderComponent } from './orders/order/order.component';
 import { Order } from './shared/order.model';
 import { AuthGuard } from './_helpers/auth.guard';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'orders', component: OrdersComponent },
+  { path: 'inventory', component: InventoryComponent },
 
  { path: 'order', children:[
  { path:'', component: OrderComponent},
