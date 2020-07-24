@@ -1,4 +1,4 @@
-import { OrderItem } from './order-item.model';
+import { OrderProduct } from './order-product.model';
 import { Order } from './order.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -9,18 +9,18 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class OrderService {
-  getItemList() {
+  getproductList() {
     throw new Error("Method not implemented.");
   }
   formData: Order;
-  orderItems: OrderItem[];
+  orderproducts: OrderProduct[];
 
   constructor(private http: HttpClient) {}
 
   saveOrder() {
     var body = {
       ...this.formData,
-      OrderItems : this.orderItems,
+      Orderproducts : this.orderproducts,
     };
     return this.http.post(environment.apiURL + '/Order', body);
   }

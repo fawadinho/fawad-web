@@ -4,7 +4,7 @@
       <h2>Order Uniforms Here</h2>
       <p class="lead">
         Please Enter the Information Below to Order the Uniforms for the
-        Customer
+        Requestor
       </p>
     </div>
     <div class="row">
@@ -35,36 +35,26 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Order Number</label>
-                <input
-                  name="OrderNo"
-                  #OrderNo="ngModel"
-                  [(ngModel)]="service.formData.OrderNo"
-                  class="form-control"
-                  readonly
-                />
-              </div>
-              <div class="form-group">
-                <label>Customer</label>
+                <label>Requestor</label>
                 <select
-                  name="CustomerID"
-                  #CustomerID="ngModel"
-                  [(ngModel)]="service.formData.CustomerID"
+                  name="RequestorID"
+                  #RequestorID="ngModel"
+                  [(ngModel)]="service.formData.RequestorID"
                   class="form-control"
                   [class.is-invalid]="
-                    !isValid && service.formData.CustomerID == 0
+                    !isValid && service.formData.RequestorID == 0
                   "
                 >
                   <option value="0">Select</option>
                   <option
-                    *ngFor="let item of customerList"
-                    value="{{ item.CustomerID }}"
-                    >{{ item.Name }}</option
+                    *ngFor="let product of requestorList"
+                    value="{{ product.RequestorID }}"
+                    >{{ product.Name }}</option
                   >
                 </select>
               </div>
-            </div>
-            <div class="col-md-6">
+
+
               <div class="form-group">
                 <label>Payment Method</label>
                 <select
@@ -78,6 +68,28 @@
                   <option value="MasterCard">MasterCard</option>
                 </select>
               </div>
+
+
+            </div>
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>Order Number</label>
+                <input
+                  name="OrderNo"
+                  #OrderNo="ngModel"
+                  [(ngModel)]="service.formData.OrderNo"
+                  class="form-control"
+                  readonly
+                />
+              </div>
+
+
+
+
+
+
+
               <div class="form-group">
                 <label>Total</label>
                 <input
@@ -93,47 +105,47 @@
 
           <table class="table table-borderless">
             <thead class="thead-light">
-              <th>Item</th>
+              <th>Product</th>
               <th>Price</th>
               <th>Quantity</th>
               <th>Total</th>
               <th>
                 <a
                   class="btn btn-sm btn-success text-white"
-                  (click)="AddorEditOrderItem(null, service.formData.OrderID)"
-                  ><i class="fa fa-plus"></i> Add Item
+                  (click)="AddorEditOrderProduct(null, service.formData.OrderID)"
+                  ><i class="fa fa-plus"></i> Add Product
                 </a>
               </th>
             </thead>
             <tbody>
               <tr
-                *ngIf="service.orderItems.length == 0"
+                *ngIf="service.orderproducts.length == 0"
                 [class.text-danger]="
-                  !isValid && service.formData.CustomerID == 0
+                  !isValid && service.formData.RequestorID == 0
                 "
               >
                 <td class="font-italic text-center" colspan="5">
-                  No Item Selected
+                  No Product Selected
                 </td>
               </tr>
 
-              <tr *ngFor="let item of service.orderItems; let i = index">
-                <td>{{ item.ItemName }}</td>
-                <td>{{ item.Price }}</td>
-                <td>{{ item.Quantity }}</td>
-                <td>{{ item.Total }}</td>
+              <tr *ngFor="let product of service.orderproducts; let i = index">
+                <td>{{ product.ProductName }}</td>
+                <td>{{ product.Price }}</td>
+                <td>{{ product.Quantity }}</td>
+                <td>{{ product.Total }}</td>
                 <td>
                   <a
                     class="btn btn-sm btn-info text-white"
-                    (click)="AddorEditOrderItem(null, service.formData.OrderID)"
+                    (click)="AddorEditOrderProduct(null, service.formData.OrderID)"
                     ><i class="fa fa-edit"></i
                   ></a>
                   <a
                     class="btn btn-sm btn-danger text-white ml-1"
                     (click)="
-                      onDeleteOrderItem(
-                        item.OrderItemID,
-                        service.formData.OrderID
+                      onDeleteOrderProduct(
+                        product.OrderProductID,
+                        service.formData.RequestorID
                       )
                     "
                     ><i class="fa fa-trash"></i
@@ -144,7 +156,7 @@
           </table>
           <div class="form group">
             <button type="submit" class="btn btn-dark">
-              <i class="fa fa-database"></i> Submit
+              <i class="fa fa-paper-plane"></i> Place Order
             </button>
             <a class="btn btn-outline-dark ml-1" routerLink="/orders"
               ><i class="fa fa-table"></i> View Orders</a

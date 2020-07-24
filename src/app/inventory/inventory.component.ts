@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService } from './../shared/item.service';
+import { ProductService } from '../shared/product.service';
 
 @Component({
   selector: 'app-inventory',
@@ -11,10 +11,10 @@ export class InventoryComponent implements OnInit {
 
   itemList: Object;
 
-  constructor(private service:ItemService) { }
+  constructor(private service:ProductService) { }
 
   ngOnInit() {
-    this.service.getItemList().then(res=> this.itemList = res);
+    this.service.getProductList().then(res=> this.itemList = res);
 
   }
 

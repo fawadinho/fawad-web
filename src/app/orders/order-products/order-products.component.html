@@ -1,30 +1,45 @@
-<h4 class="display-4">Order Item</h4>
+<h4 class="display-4">Order Product</h4>
 <hr />
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 
-  <input type="hidden" name="OrderItemID" #OrderItemID="ngModel"
-  [(ngModel)]="formData.OrderItemID"/>
+  <input type="hidden" name="OrderproductID" #OrderproductID="ngModel"
+  [(ngModel)]="formData.OrderProductID"/>
 
   <input type="hidden" name="OrderID"
   #OrderID="ngModel" [(ngModel)]="formData.OrderID"/>
 
   <input type="hidden"
-  name="ItemName" #ItemName="ngModel" [(ngModel)]="formData.ItemName" />
+  name="productName" #productName="ngModel" [(ngModel)]="formData.ProductName" />
 
   <div class="form-group">
-    <label> Items </label>
+    <label> Products </label>
     <select
-      name="ItemID"
-      #ItemID="ngModel"
-      [(ngModel)]="formData.ItemID"
+      name="productID"
+      #productID="ngModel"
+      [(ngModel)]="formData.ProductID"
       class="form-control"
       (change)="updatePrice($event.target)"
-      [class.is-invalid]="!isValid && formData.ItemID==0"
+      [class.is-invalid]="!isValid && formData.ProductID==0"
     >
 
       <option value="0">Select</option>
-      <option *ngFor="let item of itemList" value="{{ item.ItemID }}"
-        >{{ item.Name }}
+      <option *ngFor="let product of productList" value="{{ product.ProductID }}"
+        >{{ product.Name }}
+      </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label> Select Size </label>
+    <select
+      name="productID"
+      #Size="ngModel"
+      [(ngModel)]="formData.Size"
+      class="form-control"
+      (change)="updatePrice($event.target)"
+    >
+      <option value="0">Select</option>
+      <option *ngFor="let product of productList" value="{{ product.Size }}"
+        >{{ product.Size }}
       </option>
     </select>
   </div>
@@ -64,7 +79,7 @@
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-dark">
-      <i class="fa fa-database"></i>
+      <i class="fa fa-check-square"></i>
       Submit
     </button>
     <button type="button" class="btn btn-outline-dark ml-1" [mat-dialog-close]>

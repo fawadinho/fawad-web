@@ -1,7 +1,7 @@
 export class Order {
   OrderID: number;
   OrderNo: string;
-  CustomerID: number;
+  RequestorID: number;
   PaymentMethod: string;
   Total: number;
 }

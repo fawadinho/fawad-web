@@ -1,12 +1,12 @@
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { CustomerService } from './../../shared/customer.service';
-import { OrderItemsComponent } from './../order-items/order-items.component';
+import { RequestorService } from '../../shared/requestor.service';
+import { OrderproductsComponent } from './../order-products/order-products.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Customer } from 'src/app/shared/customer.model';
+import { Requestor } from 'src/app/shared/requestor.model';
 
 @Component({
   selector: 'app-order',
@@ -14,13 +14,13 @@ import { Customer } from 'src/app/shared/customer.model';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  customerList: Customer[];
+  requestorList: Requestor[];
   isValid: boolean = true;
 
   constructor(
     public service: OrderService,
     private dialog: MatDialog,
-    private CustomerService: CustomerService,
+    private RequestorService: RequestorService,
     private toastr: ToastrService,
     private router: Router
 
@@ -30,8 +30,8 @@ export class OrderComponent implements OnInit {
   ngOnInit() {
     this.resetForm();
 
-    this.CustomerService.getCustomerList().then(
-      (res) => (this.customerList = res as Customer[])
+    this.RequestorService.getRequestorList().then(
+      (res) => (this.requestorList = res as Requestor[])
     );
   }
 
@@ -41,34 +41,34 @@ export class OrderComponent implements OnInit {
     this.service.formData = {
       OrderID: null,
       OrderNo: Math.floor(100000 + Math.random() * 900000).toString(),
-      CustomerID: 0,
+      RequestorID: 0,
       PaymentMethod: '',
       Total: 0,
     };
-    this.service.orderItems = [];
+    this.service.orderproducts = [];
   }
 
-  AddorEditOrderItem(orderItemIndex, OrderID) {
+  AddorEditOrderProduct(orderProductIndex, OrderID) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
     dialogConfig.width = '50%';
-    dialogConfig.data = { orderItemIndex, OrderID };
+    dialogConfig.data = { orderProductIndex, OrderID };
     this.dialog
-      .open(OrderItemsComponent, dialogConfig)
+      .open(OrderproductsComponent, dialogConfig)
       .afterClosed()
       .subscribe((res) => {
         this.updateTotal();
       });
   }
 
-  onDeleteOrderItem(orderItemID: number, i: number) {
-    this.service.orderItems.splice(i, 1);
+  onDeleteOrderProduct(orderProductID: number, i: number) {
+    this.service.orderproducts.splice(i, 1);
     this.updateTotal();
   }
 
   updateTotal() {
-    this.service.formData.Total = this.service.orderItems.reduce(
+    this.service.formData.Total = this.service.orderproducts.reduce(
       (prev, curr) => {
         return prev + curr.Total;
       },
@@ -82,8 +82,8 @@ export class OrderComponent implements OnInit {
 
   validateForm() {
     this.isValid = true;
-    if (this.service.formData.CustomerID == 0) this.isValid = false;
-    else if (this.service.orderItems.length == 0) this.isValid = false;
+    if (this.service.formData.RequestorID == 0) this.isValid = false;
+    else if (this.service.orderproducts.length == 0) this.isValid = false;
     return this.isValid;
   }
 

@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class RequestorService {
 
   constructor(private http: HttpClient) { }
 
-  getCustomerList(){
-    return this.http.get(environment.apiURL+'/customer').toPromise();
+  getRequestorList(){
+    return this.http.get(environment.apiURL+'/requestor').toPromise();
 
   }
 }
