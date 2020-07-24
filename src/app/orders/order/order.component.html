@@ -37,7 +37,7 @@
               <div class="form-group">
                 <label>Requestor</label>
                 <select
-                  name="RequestorID"
+                  name="requestorID"
                   #RequestorID="ngModel"
                   [(ngModel)]="service.formData.RequestorID"
                   class="form-control"
@@ -47,13 +47,12 @@
                 >
                   <option value="0">Select</option>
                   <option
-                    *ngFor="let product of requestorList"
-                    value="{{ product.RequestorID }}"
-                    >{{ product.Name }}</option
+                    *ngFor="let requestor of requestorList"
+                    value="{{ requestor.RequestorID }}"
+                    >{{ requestor.Name }}</option
                   >
                 </select>
               </div>
-
 
               <div class="form-group">
                 <label>Payment Method</label>
@@ -68,11 +67,8 @@
                   <option value="MasterCard">MasterCard</option>
                 </select>
               </div>
-
-
             </div>
             <div class="col-md-6">
-
               <div class="form-group">
                 <label>Order Number</label>
                 <input
@@ -83,12 +79,6 @@
                   readonly
                 />
               </div>
-
-
-
-
-
-
 
               <div class="form-group">
                 <label>Total</label>
@@ -112,7 +102,9 @@
               <th>
                 <a
                   class="btn btn-sm btn-success text-white"
-                  (click)="AddorEditOrderProduct(null, service.formData.OrderID)"
+                  (click)="
+                    AddorEditOrderProduct(null, service.formData.OrderID)
+                  "
                   ><i class="fa fa-plus"></i> Add Product
                 </a>
               </th>
@@ -137,7 +129,9 @@
                 <td>
                   <a
                     class="btn btn-sm btn-info text-white"
-                    (click)="AddorEditOrderProduct(null, service.formData.OrderID)"
+                    (click)="
+                      AddorEditOrderProduct(null, service.formData.OrderID)
+                    "
                     ><i class="fa fa-edit"></i
                   ></a>
                   <a
@@ -167,3 +161,9 @@
     </div>
   </div>
 </body>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <h2><strong>BTM 495 Project</strong> by <strong>Team 4</strong></h2>
+  </div>
+</footer>

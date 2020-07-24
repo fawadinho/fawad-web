@@ -9,12 +9,12 @@ import { ProductService } from '../shared/product.service';
 export class InventoryComponent implements OnInit {
 
 
-  itemList: Object;
+  productList: Object;
 
   constructor(private service:ProductService) { }
 
   ngOnInit() {
-    this.service.getProductList().then(res=> this.itemList = res);
+    this.service.getProductList().then(res=> this.productList = res);
 
   }
 

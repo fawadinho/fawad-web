@@ -6,7 +6,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Requestor } from 'src/app/shared/requestor.model';
+import { requestor } from 'src/app/shared/requestor.model';
 
 @Component({
   selector: 'app-order',
@@ -14,7 +14,7 @@ import { Requestor } from 'src/app/shared/requestor.model';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  requestorList: Requestor[];
+  requestorList: requestor[];
   isValid: boolean = true;
 
   constructor(
@@ -31,7 +31,7 @@ export class OrderComponent implements OnInit {
     this.resetForm();
 
     this.RequestorService.getRequestorList().then(
-      (res) => (this.requestorList = res as Requestor[])
+      (res) => (this.requestorList = res as requestor[])
     );
   }
 
@@ -91,7 +91,7 @@ export class OrderComponent implements OnInit {
     if (this.validateForm()) {
       this.service.saveOrder().subscribe(res =>{
         this.resetForm();
-        this.toastr.success('Sent Success!', 'Swimming Inc.')
+        this.toastr.success('Sent Success!', 'MIS Inc.')
         this.router.navigate(['/orders']);
 
       })

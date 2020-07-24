@@ -1,4 +1,4 @@
-export class Requestor {
+export class requestor {
   RequestorID: number;
   Name: string;
 }

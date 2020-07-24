@@ -10,7 +10,7 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   getProductList() {
-   return this.http.get(environment.apiURL+'/Product').toPromise();
+   return this.http.get(environment.apiURL+'/product').toPromise();
   }
 }
 
