@@ -83,6 +83,8 @@
               <div class="form-group">
                 <label>Total</label>
                 <input
+                  mvndrMatCurrencyFormat
+                  [currencyCode]="'USD'"
                   name="Total"
                   #Total="ngModel"
                   [(ngModel)]="service.formData.Total"
@@ -122,10 +124,10 @@
               </tr>
 
               <tr *ngFor="let product of service.orderproducts; let i = index">
-                <td>{{ product.ProductName }}</td>
-                <td>{{ product.Price }}</td>
+                <td>{{ product.Name }}</td>
+                <td>{{ product.Price | currency }}</td>
                 <td>{{ product.Quantity }}</td>
-                <td>{{ product.Total }}</td>
+                <td>{{ product.Total | currency }}</td>
                 <td>
                   <a
                     class="btn btn-sm btn-info text-white"
@@ -149,12 +151,9 @@
             </tbody>
           </table>
           <div class="form group">
-
-
             <button type="submit" class="btn btn-danger">
               <i class="fa fa-paper-plane"></i> Place Order
             </button>
-
 
             <a class="btn btn-outline-dark ml-1" routerLink="/orders"
               ><i class="fa fa-table"></i> View Orders</a

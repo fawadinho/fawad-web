@@ -30,6 +30,7 @@
     "express": "^4.17.1",
     "jquery": "^3.5.1",
     "jshint": "^2.11.1",
+    "mat-currency-format": "0.0.7",
     "nedb": "^1.8.0",
     "ngx-toastr": "^12.1.0",
     "node-sass": "^4.14.1",

@@ -44,6 +44,7 @@ export class OrderComponent implements OnInit {
       RequestorID: 0,
       PaymentMethod: '',
       Total: 0,
+      DeletedOrderProductID: '',
     };
     this.service.orderproducts = [];
   }
@@ -63,6 +64,8 @@ export class OrderComponent implements OnInit {
   }
 
   onDeleteOrderProduct(orderProductID: number, i: number) {
+    if(orderProductID !=null)
+    this.service.formData.DeletedOrderProductID += orderProductID +","
     this.service.orderproducts.splice(i, 1);
     this.updateTotal();
   }

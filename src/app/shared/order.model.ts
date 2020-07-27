@@ -4,4 +4,6 @@ export class Order {
   RequestorID: number;
   PaymentMethod: string;
   Total: number;
+  DeletedOrderProductID: string;
+  
 }

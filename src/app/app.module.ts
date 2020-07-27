@@ -20,6 +20,7 @@ import { OrderproductsComponent } from './orders/order-products/order-products.c
 import { InventoryComponent } from './inventory/inventory.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
+import  {MatCurrencyFormatModule} from 'mat-currency-format';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { RegistrationComponent } from './user/registration/registration.componen
     MatFormFieldModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatCurrencyFormatModule,
     ToastrModule.forRoot(),
   ],
   providers: [UserService],

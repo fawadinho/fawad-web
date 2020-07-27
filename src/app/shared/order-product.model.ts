@@ -4,8 +4,10 @@ export class OrderProduct {
   ProductID: number;
   Quantity: number;
   Size: string;
-  ProductName:string;
+  Name:string;
   Price:number;
   Total:number;
 
 }
+
+

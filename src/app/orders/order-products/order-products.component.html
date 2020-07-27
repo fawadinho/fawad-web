@@ -9,10 +9,10 @@
   #OrderID="ngModel" [(ngModel)]="formData.OrderID"/>
 
   <input type="hidden"
-  name="productName" #productName="ngModel" [(ngModel)]="formData.ProductName" />
+  name="productName" #productName="ngModel" [(ngModel)]="formData.Name" />
 
 
-  
+
   <div class="form-group">
     <label> Products </label>
     <select
@@ -55,6 +55,8 @@
     <div class="form-group col-md-6">
       <label>Price</label>
       <input
+        mvndrMatCurrencyFormat
+        [currencyCode]="'USD'"
         name="Price"
         #Price="ngModel"
         [(ngModel)]="formData.Price"
@@ -76,6 +78,8 @@
     <div class="form-group col-md-6">
       <label>Total</label>
       <input
+       mvndrMatCurrencyFormat
+        [currencyCode]="'USD'"
         name="Total"
         #Total="ngModel"
         [(ngModel)]="formData.Total"

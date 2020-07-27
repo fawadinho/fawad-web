@@ -9,6 +9,8 @@ import {
 } from '@angular/material/dialog';
 import { product } from 'src/app/shared/product.model';
 import { NgForm } from '@angular/forms';
+import  {MatCurrencyFormatModule} from 'mat-currency-format';
+
 
 @Component({
   selector: 'app-order-products',
@@ -38,7 +40,7 @@ export class OrderproductsComponent implements OnInit {
       OrderProductID: null,
       OrderID: this.data.OrderID,
       ProductID: 0,
-      ProductName: '',
+      Name: '',
       Price: 0,
       Quantity: 0,
       Size: '',
@@ -51,10 +53,10 @@ export class OrderproductsComponent implements OnInit {
   updatePrice(ctrl) {
     if (ctrl.selectedIndex == 0) {
       this.formData.Price = 0;
-      this.formData.ProductName = '';
+      this.formData.Name = '';
     } else {
       this.formData.Price = this.productList[ctrl.selectedIndex - 1].Price;
-      this.formData.ProductName = this.productList[ctrl.selectedIndex - 1].Name;
+      this.formData.Name = this.productList[ctrl.selectedIndex - 1].Name;
     }
     this.updateTotal();
   }
