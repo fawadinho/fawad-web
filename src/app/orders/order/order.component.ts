@@ -40,7 +40,7 @@ export class OrderComponent implements OnInit {
     if ((form = null)) form.resetForm();
     this.service.formData = {
       OrderID: null,
-      OrderNo: Math.floor(100000 + Math.random() * 900000).toString(),
+      OrderNo: Math.floor(10000 + Math.random() * 50000).toString(),
       RequestorID: 0,
       PaymentMethod: '',
       Total: 0,
@@ -52,7 +52,7 @@ export class OrderComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
-    dialogConfig.width = '50%';
+    dialogConfig.width = '65%';
     dialogConfig.data = { orderProductIndex, OrderID };
     this.dialog
       .open(OrderproductsComponent, dialogConfig)
