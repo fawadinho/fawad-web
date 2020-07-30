@@ -1,29 +1,26 @@
 <body class="bg-light">
   <div class="container">
     <div class="py-5 text-center">
-      <h2>Requstor Orders</h2>
+      <h2>Sent Order to Suppliers!</h2>
       <p class="lead">
         This information is confidential!
       </p>
 
 
-
       <table class="table table-hover">
         <thead class="thead-light">
+          <th>Order Number.</th>
           <th>Requestor</th>
-          <th>Product Name</th>
-
-          <th>Quantity</th>
+          <th>Payment Method</th>
           <th>Total</th>
 
         </thead>
         <tbody>
           <tr *ngFor="let orderproduct of orderList">
+            <th>{{orderproduct.OrderNo}}</th>
             <th>{{orderproduct.Requestor}}</th>
-            <th>{{orderproduct.Name}}</th>
-
-            <th>{{orderproduct.Quantity}}</th>
-            <th>{{orderproduct.Total }}</th>
+            <th>{{orderproduct.PaymentMethod}}</th>
+            <th>{{orderproduct.Total | currency}}</th>
 
 
           </tr>

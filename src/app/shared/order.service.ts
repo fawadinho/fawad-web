@@ -9,8 +9,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class OrderService {
+  getProductList() {
+    throw new Error("Err");
+  }
   getproductList() {
-    throw new Error("Method not implemented.");
+    throw new Error("Err");
   }
   formData: Order;
   orderproducts: OrderProduct[];

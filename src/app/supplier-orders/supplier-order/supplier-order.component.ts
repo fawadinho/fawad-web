@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { RequestorService } from '../../shared/requestor.service';
-import { OrderproductsComponent } from './../order-products/order-products.component';
+import { SupplierOrderProductsComponent } from './../supplier-order-products/supplier-order-products.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,11 +9,12 @@ import { NgForm } from '@angular/forms';
 import { requestor } from 'src/app/shared/requestor.model';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrls: ['./order.component.scss'],
+  selector: 'app-supplier-order',
+  templateUrl: './supplier-order.component.html',
+  styleUrls: ['./supplier-order.component.scss']
 })
-export class OrderComponent implements OnInit {
+
+export class SupplierOrderComponent implements OnInit {
   requestorList: requestor[];
   isValid: boolean = true;
 
@@ -63,18 +64,11 @@ export class OrderComponent implements OnInit {
     dialogConfig.width = '65%';
     dialogConfig.data = { orderProductIndex, OrderID };
     this.dialog
-      .open(OrderproductsComponent, dialogConfig)
+      .open(SupplierOrderProductsComponent, dialogConfig)
       .afterClosed()
       .subscribe((res) => {
         this.updateTotal();
       });
-  }
-
-  DeleteOrderProduct(orderProductID: number, i: number) {
-    if (orderProductID != null)
-      this.service.formData.DeletedOrderProductID += orderProductID + ",";
-    this.service.orderproducts.splice(i, 1);
-    this.updateTotal();
   }
 
   updateTotal() {
@@ -90,13 +84,19 @@ export class OrderComponent implements OnInit {
     );
   }
 
+  DeleteOrderProduct(orderProductID: number, i: number) {
+    if (orderProductID != null)
+      this.service.formData.DeletedOrderProductID += orderProductID + ",";
+    this.service.orderproducts.splice(i, 1);
+    this.updateTotal();
+  }
 
   onSubmit(form: NgForm) {
     if (this.validateForm()) {
       this.service.saveOrder().subscribe(res => {
         this.resetForm();
-        this.toastr.success('Product Added Successfully!')
-        this.router.navigate(['/orders']);
+        this.toastr.success('Sent Success!', 'MIS Inc.')
+        this.router.navigate(['/suppliers']);
 
       })
     }

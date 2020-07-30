@@ -5,5 +5,5 @@ export class Order {
   PaymentMethod: string;
   Total: number;
   DeletedOrderProductID: string;
-  
+
 }

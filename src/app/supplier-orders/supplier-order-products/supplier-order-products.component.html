@@ -1,12 +1,12 @@
-<h4 class="display-4">Select Product</h4>
+<h4 class="display-4">Order Product</h4>
 <hr />
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 
-  <input type="hidden" name="OrderproductID" #OrderproductID="ngModel" [(ngModel)]="formData.OrderProductID" />
+  <input type="hidden" name="ProductName" #ProductName="ngModel" [(ngModel)]="formData.Name" />
 
-  <input type="hidden" name="OrderID" #OrderID="ngModel" [(ngModel)]="formData.OrderID" />
+  <input type="hidden" name="OrderProductID" #OrderProductID="ngModel" [(ngModel)]="formData.OrderProductID" />
 
-  <input type="hidden" name="productName" #productName="ngModel" [(ngModel)]="formData.Name" />
+  <input type="hidden" name="ProductID" #ProductID="ngModel" [(ngModel)]="formData.ProductID" />
 
 
 
@@ -20,6 +20,7 @@
       </option>
     </select>
   </div>
+
 
 
   <div class="form-group">
@@ -51,6 +52,7 @@
         class="form-control" readonly />
     </div>
   </div>
+
   <div class="form-group">
     <button type="submit" class="btn btn-dark">
       <i class="fa fa-check-square"></i>

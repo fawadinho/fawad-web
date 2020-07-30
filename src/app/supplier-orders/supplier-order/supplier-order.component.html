@@ -1,9 +1,9 @@
 <body class="bg-light">
   <div class="container">
     <div class="py-5 text-center">
-      <h2>Save Requestor Order </h2>
+      <h2>Place Order to Supplier </h2>
       <p class="lead">
-        Please Enter the Information Below to Save Requestor Order
+        Please Enter the Information Below to Send Order to Supplier
       </p>
     </div>
     <div class="row">
@@ -21,7 +21,7 @@
       </div>
 
       <div class="col-md-8 order-md-1">
-        <h1>Compile Order Form</h1>
+        <h1>Ordering Form</h1>
 
         <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
           <div class="row">
@@ -39,22 +39,39 @@
               </div>
 
               <div class="form-group">
-
+                <label>Payment Method</label>
+                <select name="PaymentMethod" #PaymentMethod="ngModel" [(ngModel)]="service.formData.PaymentMethod"
+                  class="form-control">
+                  <option value="">Select</option>
+                  <option value="Visa">Visa</option>
+                  <option value="MasterCard">MasterCard</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <th>
                   <a class="btn btn-sm btn-success text-white"
                     (click)="AddOrderProduct(null, service.formData.OrderID)"><i class="fa fa-plus"></i> Add Product
                   </a>
                 </th>
               </div>
+
+
+
+
             </div>
             <div class="col-md-6">
+              <div class="form-group">
+                <label>Order Number</label>
+                <input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="service.formData.OrderNo" class="form-control"
+                  readonly />
+              </div>
+
+
               <div class="form-group">
                 <label>Total</label>
                 <input mvndrMatCurrencyFormat [currencyCode]="'USD'" name="Total" #Total="ngModel"
                   [(ngModel)]="service.formData.Total" class="form-control" readonly />
               </div>
-
-
             </div>
           </div>
 
@@ -101,11 +118,12 @@
             </tbody>
           </table>
           <div class="form group">
-            <button type="submit" class="btn btn-warning">
-              <i class="fa fa-database"></i> Save Order
+            <button type="submit" class="btn btn-danger">
+              <i class="fa fa-paper-plane"></i> Place Order
             </button>
 
-            <a class="btn btn-outline-dark ml-1" routerLink="/orders"><i class="fa fa-table"></i> View Requestor Orders</a>
+            <a class="btn btn-outline-dark ml-1" routerLink="/suppliers"><i class="fa fa-table"></i> View Sent
+              Orders</a>
           </div>
         </form>
       </div>
