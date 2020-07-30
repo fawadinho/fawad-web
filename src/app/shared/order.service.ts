@@ -15,21 +15,18 @@ export class OrderService {
   formData: Order;
   orderproducts: OrderProduct[];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  getOrderList() {
+    return this.http.get(environment.apiURL + '/Order').toPromise();
+
+  }
 
   saveOrder() {
     var body = {
       ...this.formData,
-      Orderproducts : this.orderproducts,
+      Orderproducts: this.orderproducts,
     };
     return this.http.post(environment.apiURL + '/Order', body);
   }
-
-  getOrderList(){
-    return this.http.get(environment.apiURL+'/Order').toPromise();
-
-  }
-
-
-
 }

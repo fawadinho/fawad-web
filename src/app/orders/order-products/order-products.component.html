@@ -2,31 +2,21 @@
 <hr />
 <form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
 
-  <input type="hidden" name="OrderproductID" #OrderproductID="ngModel"
-  [(ngModel)]="formData.OrderProductID"/>
+  <input type="hidden" name="OrderproductID" #OrderproductID="ngModel" [(ngModel)]="formData.OrderProductID" />
 
-  <input type="hidden" name="OrderID"
-  #OrderID="ngModel" [(ngModel)]="formData.OrderID"/>
+  <input type="hidden" name="OrderID" #OrderID="ngModel" [(ngModel)]="formData.OrderID" />
 
-  <input type="hidden"
-  name="productName" #productName="ngModel" [(ngModel)]="formData.Name" />
+  <input type="hidden" name="productName" #productName="ngModel" [(ngModel)]="formData.Name" />
 
 
 
   <div class="form-group">
     <label> Products </label>
-    <select
-      name="productID"
-      #productID="ngModel"
-      [(ngModel)]="formData.ProductID"
-      class="form-control"
-      (change)="updatePrice($event.target)"
-      [class.is-invalid]="!isValid && formData.ProductID==0"
-    >
+    <select name="productID" #productID="ngModel" [(ngModel)]="formData.ProductID" class="form-control"
+      (change)="updatePrice($event.target)" [class.is-invalid]="!isValid && formData.ProductID==0">
 
       <option value="0">Select</option>
-      <option *ngFor="let product of productList" value="{{ product.ProductID }}"
-        >{{ product.Name }}
+      <option *ngFor="let product of productList" value="{{ product.ProductID }}">{{ product.Name }}
       </option>
     </select>
   </div>
@@ -35,16 +25,10 @@
 
   <div class="form-group">
     <label> Select Size </label>
-    <select
-      name="productID"
-      #Size="ngModel"
-      [(ngModel)]="formData.Size"
-      class="form-control"
-      (change)="updatePrice($event.target)"
-    >
+    <select name="productID" #Size="ngModel" [(ngModel)]="formData.Size" class="form-control"
+      (change)="updatePrice($event.target)">
       <option value="0">Select</option>
-      <option *ngFor="let product of productList" value="{{ product.Size }}"
-        >{{ product.Size }}
+      <option *ngFor="let product of productList" value="{{ product.Size }}">{{ product.Size }}
       </option>
     </select>
   </div>
@@ -54,38 +38,18 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label>Price</label>
-      <input
-        mvndrMatCurrencyFormat
-        [currencyCode]="'USD'"
-        name="Price"
-        #Price="ngModel"
-        [(ngModel)]="formData.Price"
-        class="form-control"
-        readonly
-      />
+      <input mvndrMatCurrencyFormat [currencyCode]="'USD'" name="Price" #Price="ngModel" [(ngModel)]="formData.Price"
+        class="form-control" readonly />
     </div>
     <div class="form-group col-md-6">
       <label>Quantity</label>
-      <input
-        name="Quantity"
-        #Quantity="ngModel"
-        [(ngModel)]="formData.Quantity"
-        class="form-control"
-        (keyup)="updateTotal()"
-        [class.is-invalid]="!isValid && formData.Quantity==0"
-      />
+      <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity" class="form-control"
+        (keyup)="updateTotal()" [class.is-invalid]="!isValid && formData.Quantity==0" />
     </div>
     <div class="form-group col-md-6">
       <label>Total</label>
-      <input
-       mvndrMatCurrencyFormat
-        [currencyCode]="'USD'"
-        name="Total"
-        #Total="ngModel"
-        [(ngModel)]="formData.Total"
-        class="form-control"
-        readonly
-      />
+      <input mvndrMatCurrencyFormat [currencyCode]="'USD'" name="Total" #Total="ngModel" [(ngModel)]="formData.Total"
+        class="form-control" readonly />
     </div>
   </div>
   <div class="form-group">
@@ -99,4 +63,3 @@
     </button>
   </div>
 </form>
-

@@ -9,7 +9,7 @@ import {
 } from '@angular/material/dialog';
 import { product } from 'src/app/shared/product.model';
 import { NgForm } from '@angular/forms';
-import  {MatCurrencyFormatModule} from 'mat-currency-format';
+import { MatCurrencyFormatModule } from 'mat-currency-format';
 
 
 @Component({
@@ -21,33 +21,33 @@ import  {MatCurrencyFormatModule} from 'mat-currency-format';
 export class OrderproductsComponent implements OnInit {
   formData: OrderProduct;
   productList: product[];
-  isValid:boolean = true;
+  isValid: boolean = true;
 
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<OrderproductsComponent>,
     private productService: ProductService,
-    private OrderService:OrderService
-  ) {}
+    private OrderService: OrderService
+  ) { }
 
   ngOnInit() {
     this.productService.getProductList().then(res => this.productList = res as product[]);
 
-    if(this.data.orderproductIndex==null)
+    if (this.data.orderproductIndex == null)
 
-    this.formData = {
-      OrderProductID: null,
-      OrderID: this.data.OrderID,
-      ProductID: 0,
-      Name: '',
-      Price: 0,
-      Quantity: 0,
-      Size: '',
-      Total: 0,
-    }
+      this.formData = {
+        OrderProductID: null,
+        OrderID: this.data.OrderID,
+        ProductID: 0,
+        Name: '',
+        Price: 0,
+        Quantity: 0,
+        Size: '',
+        Total: 0,
+      }
     else
-      this.formData = Object.assign({}, this.OrderService.orderproducts [this.data.orderproductIndex]);
+      this.formData = Object.assign({}, this.OrderService.orderproducts[this.data.orderproductIndex]);
   }
 
   updatePrice(ctrl) {
@@ -61,26 +61,26 @@ export class OrderproductsComponent implements OnInit {
     this.updateTotal();
   }
 
-  updateTotal(){
+  updateTotal() {
     this.formData.Total = parseFloat((this.formData.Quantity * this.formData.Price).toFixed(2));
 
   }
-  onSubmit(form:NgForm){
-    if(this.validateForm(form.value))
-    this.OrderService.orderproducts.push(form.value);
+  onSubmit(form: NgForm) {
+    if (this.validateForm(form.value))
+      this.OrderService.orderproducts.push(form.value);
 
     else
-    this.OrderService.orderproducts[this.data.orderproductIndex] = form.value;
+      this.OrderService.orderproducts[this.data.orderproductIndex] = form.value;
     this.dialogRef.close();
 
   }
 
-  validateForm(formData:OrderProduct) {
-    this.isValid =true;
-    if(formData.ProductID==0)
-    this.isValid=false;
-    else if(formData.Quantity==0)
-    this.isValid = false;
+  validateForm(formData: OrderProduct) {
+    this.isValid = true;
+    if (formData.ProductID == 0)
+      this.isValid = false;
+    else if (formData.Quantity == 0)
+      this.isValid = false;
     return this.isValid;
   }
 }

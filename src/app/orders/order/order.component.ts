@@ -24,7 +24,7 @@ export class OrderComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
 
-  ) {}
+  ) { }
 
 
   ngOnInit() {
@@ -49,7 +49,14 @@ export class OrderComponent implements OnInit {
     this.service.orderproducts = [];
   }
 
-  AddorEditOrderProduct(orderProductIndex, OrderID) {
+  validateForm() {
+    this.isValid = true;
+    if (this.service.formData.RequestorID == 0) this.isValid = false;
+    else if (this.service.orderproducts.length == 0) this.isValid = false;
+    return this.isValid;
+  }
+
+  AddOrderProduct(orderProductIndex, OrderID) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.disableClose = true;
@@ -63,9 +70,9 @@ export class OrderComponent implements OnInit {
       });
   }
 
-  onDeleteOrderProduct(orderProductID: number, i: number) {
-    if(orderProductID !=null)
-    this.service.formData.DeletedOrderProductID += orderProductID +","
+  DeleteOrderProduct(orderProductID: number, i: number) {
+    if (orderProductID != null)
+      this.service.formData.DeletedOrderProductID += orderProductID + ","
     this.service.orderproducts.splice(i, 1);
     this.updateTotal();
   }
@@ -83,16 +90,10 @@ export class OrderComponent implements OnInit {
     );
   }
 
-  validateForm() {
-    this.isValid = true;
-    if (this.service.formData.RequestorID == 0) this.isValid = false;
-    else if (this.service.orderproducts.length == 0) this.isValid = false;
-    return this.isValid;
-  }
 
   onSubmit(form: NgForm) {
     if (this.validateForm()) {
-      this.service.saveOrder().subscribe(res =>{
+      this.service.saveOrder().subscribe(res => {
         this.resetForm();
         this.toastr.success('Sent Success!', 'MIS Inc.')
         this.router.navigate(['/orders']);

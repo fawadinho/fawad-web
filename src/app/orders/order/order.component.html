@@ -3,8 +3,7 @@
     <div class="py-5 text-center">
       <h2>Order Uniforms Here</h2>
       <p class="lead">
-        Please Enter the Information Below to Order the Uniforms for the
-        Requestor
+        Please Enter the Information Below to Order the Uniforms for the Requestor
       </p>
     </div>
     <div class="row">
@@ -13,9 +12,7 @@
           <span class="text-muted">Your Profile</span>
         </h4>
         <ul class="list-group mb-3">
-          <li
-            class="list-group-item d-flex justify-content-between lh-condensed"
-          >
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
               <img src="../../../assets/fawad-saadatlogo.png" />
             </div>
@@ -26,42 +23,25 @@
       <div class="col-md-8 order-md-1">
         <h1>Ordering Form</h1>
 
-        <form
-          #form="ngForm"
-          autocomplete="off"
-          *ngIf="service.formData"
-          (submit)="onSubmit(form)"
-        >
+        <form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Requestor</label>
-                <select
-                  name="requestorID"
-                  #RequestorID="ngModel"
-                  [(ngModel)]="service.formData.RequestorID"
-                  class="form-control"
-                  [class.is-invalid]="
+                <select name="requestorID" #RequestorID="ngModel" [(ngModel)]="service.formData.RequestorID"
+                  class="form-control" [class.is-invalid]="
                     !isValid && service.formData.RequestorID == 0
-                  "
-                >
+                  ">
                   <option value="0">Select</option>
-                  <option
-                    *ngFor="let requestor of requestorList"
-                    value="{{ requestor.RequestorID }}"
-                    >{{ requestor.Name }}</option
-                  >
+                  <option *ngFor="let requestor of requestorList" value="{{ requestor.RequestorID }}">
+                    {{ requestor.Name }}</option>
                 </select>
               </div>
 
               <div class="form-group">
                 <label>Payment Method</label>
-                <select
-                  name="PaymentMethod"
-                  #PaymentMethod="ngModel"
-                  [(ngModel)]="service.formData.PaymentMethod"
-                  class="form-control"
-                >
+                <select name="PaymentMethod" #PaymentMethod="ngModel" [(ngModel)]="service.formData.PaymentMethod"
+                  class="form-control">
                   <option value="">Select</option>
                   <option value="Visa">Visa</option>
                   <option value="MasterCard">MasterCard</option>
@@ -71,26 +51,14 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label>Order Number</label>
-                <input
-                  name="OrderNo"
-                  #OrderNo="ngModel"
-                  [(ngModel)]="service.formData.OrderNo"
-                  class="form-control"
-                  readonly
-                />
+                <input name="OrderNo" #OrderNo="ngModel" [(ngModel)]="service.formData.OrderNo" class="form-control"
+                  readonly />
               </div>
 
               <div class="form-group">
                 <label>Total</label>
-                <input
-                  mvndrMatCurrencyFormat
-                  [currencyCode]="'USD'"
-                  name="Total"
-                  #Total="ngModel"
-                  [(ngModel)]="service.formData.Total"
-                  class="form-control"
-                  readonly
-                />
+                <input mvndrMatCurrencyFormat [currencyCode]="'USD'" name="Total" #Total="ngModel"
+                  [(ngModel)]="service.formData.Total" class="form-control" readonly />
               </div>
             </div>
           </div>
@@ -102,22 +70,15 @@
               <th>Quantity</th>
               <th>Total</th>
               <th>
-                <a
-                  class="btn btn-sm btn-success text-white"
-                  (click)="
-                    AddorEditOrderProduct(null, service.formData.OrderID)
-                  "
-                  ><i class="fa fa-plus"></i> Add Product
+                <a class="btn btn-sm btn-success text-white"
+                  (click)="AddOrderProduct(null, service.formData.OrderID)"><i class="fa fa-plus"></i> Add Product
                 </a>
               </th>
             </thead>
             <tbody>
-              <tr
-                *ngIf="service.orderproducts.length == 0"
-                [class.text-danger]="
+              <tr *ngIf="service.orderproducts.length == 0" [class.text-danger]="
                   !isValid && service.formData.RequestorID == 0
-                "
-              >
+                ">
                 <td class="font-italic text-center" colspan="5">
                   No Product Selected
                 </td>
@@ -129,23 +90,21 @@
                 <td>{{ product.Quantity }}</td>
                 <td>{{ product.Total | currency }}</td>
                 <td>
-                  <a
+                  <!--      <a
                     class="btn btn-sm btn-info text-white"
                     (click)="
-                      AddorEditOrderProduct(null, service.formData.OrderID)
+                      AddOrderProduct(null, service.formData.OrderID)
                     "
                     ><i class="fa fa-edit"></i
                   ></a>
-                  <a
-                    class="btn btn-sm btn-danger text-white ml-1"
-                    (click)="
-                      onDeleteOrderProduct(
+
+                  -->
+                  <a class="btn btn-sm btn-danger text-white ml-1" (click)="
+                      DeleteOrderProduct(
                         product.OrderProductID,
                         service.formData.RequestorID
                       )
-                    "
-                    ><i class="fa fa-trash"></i
-                  ></a>
+                    "><i class="fa fa-trash"></i></a>
                 </td>
               </tr>
             </tbody>
@@ -155,9 +114,7 @@
               <i class="fa fa-paper-plane"></i> Place Order
             </button>
 
-            <a class="btn btn-outline-dark ml-1" routerLink="/orders"
-              ><i class="fa fa-table"></i> View Orders</a
-            >
+            <a class="btn btn-outline-dark ml-1" routerLink="/orders"><i class="fa fa-table"></i> View Orders</a>
           </div>
         </form>
       </div>

@@ -1,4 +1,9 @@
-.center, .center-column, .top, .right, .bottom, .left {
+.center,
+.center-column,
+.top,
+.right,
+.bottom,
+.left {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,17 +13,29 @@
   flex-direction: column;
 }
 
-.top { align-items: flex-start;}
-.right { justify-content: flex-end;}
-.bottom { align-items: flex-end;}
-.left { justify-content: flex-start;}
+.top {
+  align-items: flex-start;
+}
 
-.single-spaced, .single-spaced * {
+.right {
+  justify-content: flex-end;
+}
+
+.bottom {
+  align-items: flex-end;
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.single-spaced,
+.single-spaced * {
   line-height: 1;
 }
 
 @media (max-width: 1024px) {
   .desktop {
-      display: none;
+    display: none;
   }
 }

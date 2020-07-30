@@ -9,11 +9,15 @@ export class OrdersComponent implements OnInit {
 
   orderList: Object;
 
-  constructor(private service:OrderService) { }
+  constructor(private service: OrderService) { }
 
   ngOnInit() {
-    this.service.getOrderList().then(res=> this.orderList = res);
+    this.service.getOrderList().then(res => this.orderList = res);
 
   }
 
 }
+
+
+
+

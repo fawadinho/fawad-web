@@ -11,10 +11,10 @@ export class InventoryComponent implements OnInit {
 
   productList: Object;
 
-  constructor(private service:ProductService) { }
+  constructor(private service: ProductService) { }
 
   ngOnInit() {
-    this.service.getProductList().then(res=> this.productList = res);
+    this.service.getProductList().then(res => this.productList = res);
 
   }
 
