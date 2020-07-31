@@ -12,18 +12,16 @@
         <thead class="thead-light">
           <th>Requestor</th>
           <th>Product Name</th>
-
           <th>Quantity</th>
           <th>Total</th>
 
         </thead>
         <tbody>
-          <tr *ngFor="let orderproduct of orderList">
-            <th>{{orderproduct.Requestor}}</th>
-            <th>{{orderproduct.Name}}</th>
-
-            <th>{{orderproduct.Quantity}}</th>
-            <th>{{orderproduct.Total }}</th>
+          <tr *ngFor="let RequestorOrderproduct of requestororderList">
+            <th>{{RequestorOrderproduct.Requestor}}</th>
+            <th>{{RequestorOrderproduct.Name}}</th>
+            <th>{{RequestorOrderproduct.Quantity}}</th>
+            <th>{{RequestorOrderproduct.Total | currency}}</th>
 
 
           </tr>
@@ -33,6 +31,8 @@
     </div>
   </div>
   <br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <!--
   <div class="card text-center">
 
     <div class="card-body">
@@ -42,5 +42,5 @@
     </div>
 
   </div>
-
+-->
 </body>

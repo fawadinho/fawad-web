@@ -16,20 +16,20 @@ export class RequestorOrderService {
     throw new Error("Err");
   }
   formData: RequestorOrder;
-  requestororderproducts: RequestorOrderProduct[] = [];
+  RequestorOrderProducts: RequestorOrderProduct[];
 
   constructor(private http: HttpClient) { }
 
   getRequestorOrderList() {
-    return this.http.get(environment.apiURL + '/RequestorOrders').toPromise();
+    return this.http.get(environment.apiURL + '/RequestorOrders/GetRequestorOrders').toPromise();
 
   }
 
   saveOrder() {
     var body = {
       ...this.formData,
-      RequestorOrderproducts: this.requestororderproducts,
+      requestorOrderProducts: this.RequestorOrderProducts,
     };
-    return this.http.post(environment.apiURL + '/RequestorOrders', body);
+    return this.http.post(environment.apiURL + '/RequestorOrders/PostRequestorOrder', body);
   }
 }

@@ -1,4 +1,4 @@
-import { OrderService } from '../../shared/order.service';
+
 import { ProductService } from '../../shared/product.service';
 import { OrderProduct } from '../../shared/order-product.model';
 import { Component, OnInit, Inject } from '@angular/core';
@@ -10,6 +10,8 @@ import {
 import { product } from 'src/app/shared/product.model';
 import { NgForm } from '@angular/forms';
 import { MatCurrencyFormatModule } from 'mat-currency-format';
+import { RequestorOrderService } from 'src/app/shared/requestororder.service';
+import { RequestorOrderProduct } from 'src/app/shared/requestororder-product.model';
 
 
 @Component({
@@ -19,8 +21,8 @@ import { MatCurrencyFormatModule } from 'mat-currency-format';
 
 
 export class OrderproductsComponent implements OnInit {
-  formData: OrderProduct;
-  productList: product[];
+  formData: RequestorOrderProduct;
+  productList: product[] = [];
   isValid: boolean = true;
 
 
@@ -28,7 +30,7 @@ export class OrderproductsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<OrderproductsComponent>,
     private productService: ProductService,
-    private OrderService: OrderService
+    private requestorOrderService: RequestorOrderService
   ) { }
 
   ngOnInit() {
@@ -37,8 +39,8 @@ export class OrderproductsComponent implements OnInit {
     if (this.data.orderproductIndex == null)
 
       this.formData = {
-        OrderProductID: null,
-        OrderID: this.data.OrderID,
+        RequestorOrderProductID: null,
+        RequestorOrderID: this.data.OrderID,
         ProductID: 0,
         Name: '',
         Price: 0,
@@ -47,7 +49,7 @@ export class OrderproductsComponent implements OnInit {
         Total: 0,
       }
     else
-      this.formData = Object.assign({}, this.OrderService.orderproducts[this.data.orderproductIndex]);
+      this.formData = Object.assign({}, this.requestorOrderService.RequestorOrderProducts[this.data.orderproductIndex]);
   }
 
   updatePrice(ctrl) {
@@ -67,10 +69,10 @@ export class OrderproductsComponent implements OnInit {
   }
   onSubmit(form: NgForm) {
     if (this.validateForm(form.value))
-      this.OrderService.orderproducts.push(form.value);
+      this.requestorOrderService.RequestorOrderProducts.push(form.value);
 
     else
-      this.OrderService.orderproducts[this.data.orderproductIndex] = form.value;
+      this.requestorOrderService.RequestorOrderProducts[this.data.orderproductIndex] = form.value;
     this.dialogRef.close();
 
   }

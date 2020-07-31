@@ -7,6 +7,7 @@ import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { requestor } from 'src/app/shared/requestor.model';
+import { RequestorOrderService } from 'src/app/shared/requestororder.service';
 
 @Component({
   selector: 'app-order',
@@ -18,7 +19,7 @@ export class OrderComponent implements OnInit {
   isValid: boolean = true;
 
   constructor(
-    public service: OrderService,
+    public service: RequestorOrderService,
     private dialog: MatDialog,
     private RequestorService: RequestorService,
     private toastr: ToastrService,
@@ -39,20 +40,20 @@ export class OrderComponent implements OnInit {
   resetForm(form?: NgForm) {
     if ((form = null)) form.resetForm();
     this.service.formData = {
-      OrderID: null,
-      OrderNo: Math.floor(10000 + Math.random() * 50000).toString(),
+      RequestorOrderID: null,
+      RequestorNo: Math.floor(10000 + Math.random() * 50000).toString(),
       RequestorID: 0,
       PaymentMethod: '',
       Total: 0,
       DeletedOrderProductID: '',
     };
-    this.service.orderproducts = [];
+    this.service.RequestorOrderProducts = [];
   }
 
   validateForm() {
     this.isValid = true;
     if (this.service.formData.RequestorID == 0) this.isValid = false;
-    else if (this.service.orderproducts.length == 0) this.isValid = false;
+    else if (this.service.RequestorOrderProducts.length == 0) this.isValid = false;
     return this.isValid;
   }
 
@@ -73,12 +74,12 @@ export class OrderComponent implements OnInit {
   DeleteOrderProduct(orderProductID: number, i: number) {
     if (orderProductID != null)
       this.service.formData.DeletedOrderProductID += orderProductID + ",";
-    this.service.orderproducts.splice(i, 1);
+    this.service.RequestorOrderProducts.splice(i, 1);
     this.updateTotal();
   }
 
   updateTotal() {
-    this.service.formData.Total = this.service.orderproducts.reduce(
+    this.service.formData.Total = this.service.RequestorOrderProducts.reduce(
       (prev, curr) => {
         return prev + curr.Total;
       },

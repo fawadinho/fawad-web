@@ -21,7 +21,7 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getOrderList() {
-    return this.http.get(environment.apiURL + '/Order').toPromise();
+    return this.http.get(environment.apiURL + '/Order/GetOrders').toPromise();
 
   }
 
@@ -30,6 +30,6 @@ export class OrderService {
       ...this.formData,
       Orderproducts: this.orderproducts,
     };
-    return this.http.post(environment.apiURL + '/Order', body);
+    return this.http.post(environment.apiURL + '/Order/PostOrder', body);
   }
 }
