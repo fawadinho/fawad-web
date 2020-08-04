@@ -24,6 +24,7 @@ import  {MatCurrencyFormatModule} from 'mat-currency-format';
 import { SupplierOrderComponent } from './supplier-orders/supplier-order/supplier-order.component';
 import { SupplierOrdersComponent } from './supplier-orders/supplier-orders.component';
 import { SupplierOrderProductsComponent } from './supplier-orders/supplier-order-products/supplier-order-products.component';
+import { DocsComponent } from './docs/docs.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SupplierOrderProductsComponent } from './supplier-orders/supplier-order
     SupplierOrderComponent,
     SupplierOrdersComponent,
     SupplierOrderProductsComponent,
+    DocsComponent,
   ],
   imports: [
     BrowserModule,

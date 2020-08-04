@@ -15,6 +15,6 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.service.getRequestorOrderList().then(res => this.requestororderList = res);
 
-  }
+  }z
 
 }
