@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://localhost:44312/api',
-  apiURL1: 'https://api.saadatdevelopment.com/api'
+  apiURL1: 'https://localhost:44312/api',
+  apiURL: 'https://api.saadatdevelopment.com/api'
 
 };
 
