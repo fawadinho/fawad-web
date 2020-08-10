@@ -20,7 +20,7 @@
           <tr *ngFor="let product of productList">
             <th>{{product.ProductID}}</th>
             <th>{{product.Name}}</th>
-            <th>{{product.Price}}</th>
+            <th>{{product.Price | currency}}</th>
             <th>{{product.Quantity}}</th>
 
             <th>

@@ -1,4 +1,4 @@
-import { DocsComponent } from './docs/docs.component';
+import { DocuComponent } from './docu/docu.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserComponent } from './user/user.component';
 import { InventoryComponent } from './inventory/inventory.component';
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'suppliers', component: SupplierOrdersComponent },
-  { path: 'docs', component: DocsComponent },
+  { path: 'docu', component: DocuComponent },
   { path: 'inventory', component: InventoryComponent },
 
   { path: '', redirectTo:'/user/registration', pathMatch:'full'},
