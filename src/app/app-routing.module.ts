@@ -12,7 +12,7 @@ import { SupplierOrdersComponent } from './supplier-orders/supplier-orders.compo
 import { SupplierOrderComponent } from './supplier-orders/supplier-order/supplier-order.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo:'/user/registration', pathMatch:'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'orders', component: OrdersComponent },

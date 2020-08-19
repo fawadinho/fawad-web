@@ -13,29 +13,35 @@
           <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
             <div class="field">
               <div class="control">
-                <input class="input is-medium" formControlName type="text" placeholder="Username">
+                <input class="input is-medium" formControlName="UserName" type="text" placeholder="Username">
+                <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required"> Required</label>
               </div>
             </div>
             <div class="field">
               <div class="control">
-                <input class="input is-medium" formControlName type="email" placeholder="Email">
+                <input class="input is-medium" formControlName="Email" type="email" placeholder="Email">
+                <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email"> Invalid Email</label>
               </div>
             </div>
             <div class="field">
               <div class="control">
-                <input class="input is-medium" formControlName type="text" placeholder="Name">
+                <input class="input is-medium" formControlName="FullName" type="text" placeholder="Name">
               </div>
             </div>
 
             <div formGroupName="Passwords">
               <div class="field">
             <div class="control">
-            <input class="input is-medium" formControlName type="password" placeholder="Password">
+            <input class="input is-medium" formControlName="Password" type="password" placeholder="Password">
+            <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required"> Required</label>
+            <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength"> Minimum 5 characters Required</label>
             </div>
             </div>
             <div class="field">
             <div class="control">
-            <input class="input is-medium" formControlName type="password" placeholder="Confirm Password">
+            <input class="input is-medium" formControlName="ConfirmPassword" type="password" placeholder="Confirm Password">
+            <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required"> Required</label>
+            <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch"> Give it another try!</label>
             </div>
             </div>
           </div>
@@ -43,7 +49,7 @@
 <br>
 <div class="field">
   <div class="control">
-    <button type="submit" class="button is-block is-link is-fullwidth is-medium" >Submit</button>
+    <button type="submit" class="button is-block is-link is-fullwidth is-medium" [disabled]="!service.formModel.valid">Submit</button>
   </div>
   </div>
 

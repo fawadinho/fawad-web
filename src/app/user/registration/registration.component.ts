@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(public service: UserService) { }
+  constructor(public service: UserService, private toastr:ToastrService) { }
 
   ngOnInit() {
     this.service.formModel.reset();
@@ -20,14 +21,17 @@ export class RegistrationComponent implements OnInit {
       (res:any) =>{
         if(res.succeeded){
           this.service.formModel.reset();
+          this.toastr.success('Created Successfuly!')
 
         } else {
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
+                this.toastr.error('Username not available ')
                 break;
 
                 default:
+                  this.toastr.error(element.description, 'Signup Failed')
 
                 break;
             }

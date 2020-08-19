@@ -10,15 +10,13 @@ export class UserService {
   readonly BaseURI = 'http://localhost:54277/api'
 
 
-
-
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
     FullName: [''],
     Passwords: this.fb.group(
       {
-        Password: ['', [Validators.required, Validators.minLength(4)]],
+        Password: ['', [Validators.required, Validators.minLength(5)]],
         ConfirmPassword: ['', Validators.required],
       },
       { validator: this.comparePasswords }
@@ -51,3 +49,4 @@ export class UserService {
    return this.http.post(this.BaseURI+ '/ApplicationUser/Register', body);
   }
 }
+
