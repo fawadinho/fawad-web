@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { DocuComponent } from './docu/docu.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserComponent } from './user/user.component';
@@ -11,16 +12,17 @@ import { OrdersComponent } from './orders/orders.component';
 import { SupplierOrdersComponent } from './supplier-orders/supplier-orders.component';
 import { SupplierOrderComponent } from './supplier-orders/supplier-order/supplier-order.component';
 
+
+
 const routes: Routes = [
-  { path: '', redirectTo:'/user/registration', pathMatch:'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'suppliers', component: SupplierOrdersComponent },
-  { path: 'docu', component: DocuComponent },
-  { path: 'inventory', component: InventoryComponent },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+  { path: 'suppliers', component: SupplierOrdersComponent, canActivate: [AuthGuard] },
+  { path: 'docu', component: DocuComponent, canActivate: [AuthGuard] },
+  { path: 'inventory', component: InventoryComponent, canActivate: [AuthGuard] },
 
-  { path: '', redirectTo:'/user/registration', pathMatch:'full'},
   {
     path: 'user', component: UserComponent,
     children: [{ path: 'registration', component: RegistrationComponent }],
@@ -29,7 +31,7 @@ const routes: Routes = [
   {
     path: 'order',
     children: [
-      { path: '', component: OrderComponent },
+      { path: '', component: OrderComponent, canActivate: [AuthGuard] },
       { path: 'edit/:id', component: OrdersComponent },
 
     ],
@@ -38,7 +40,7 @@ const routes: Routes = [
   {
     path: 'supplier-order',
     children: [
-      { path: '', component: SupplierOrderComponent },
+      { path: '', component: SupplierOrderComponent, canActivate: [AuthGuard] },
       { path: 'edit/:id', component: SupplierOrderComponent },
 
     ],
@@ -50,4 +52,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

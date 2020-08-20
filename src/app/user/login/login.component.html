@@ -3,15 +3,13 @@
     <div class="container has-text-centered">
       <div class="column is-4 is-offset-4">
         <div class="box">
-          <form>
+
+
+          <form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
             <div class="field">
               <div class="control">
-                <input
-                  type="text"
-                  formControlName="username"
-                  class="form-control"
-                  placeholder="User Name"
-                />
+                <input class="form-control" #UserName="ngModel" name="UserName" [(ngModel)]="formModel.UserName"
+                  required placeholder="User Name">
                 <div class="invalid-feedback">
                   <div>Username is required</div>
                 </div>
@@ -20,23 +18,27 @@
 
             <div class="field">
               <div class="control">
-                <input
-                  type="password"
-                  formControlName="password"
-                  class="form-control"
-                  placeholder="Password"
-                />
+                <input type="password" class="form-control" #Password="ngModel" name="Password" placeholder="Password"
+                  [(ngModel)]="formModel.Password" required>
                 <div class="invalid-feedback">
                   <div>Password is required</div>
                 </div>
               </div>
             </div>
 
-            <button class="button is-block is-link is-large is-fullwidth">
-              <span class="spinner-border spinner-border-sm mr-2"></span>
-              Login <i class="" aria-hidden="true"></i>
-            </button>
+
+            <div class="field">
+              <div class="control">
+                <button type="submit" class="button is-block is-link is-fullwidth is-medium" [disabled]="form.invalid">Submit</button>
+              </div>
+              </div>
+
           </form>
+
+
+
+
+
         </div>
       </div>
     </div>
