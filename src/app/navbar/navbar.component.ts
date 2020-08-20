@@ -10,28 +10,44 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  authService: any;
-  authenticated: any;
 
-  constructor(private router:Router, private service:UserService, private toastr:ToastrService) { }
+  userDetails;
+
+
+  constructor(private router: Router, private service: UserService, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.service.getUserProfile().subscribe(
+      res => {
+        this.userDetails = res;
+       },
+      err => {
+        console.log(err);
+      }
+    )
 
   }
 
 
-  onLogout(){
+  onLogout() {
 
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
     this.toastr.success('Logged Out Successfuly!')
 
+    if (localStorage.getItem('token') != null)
+      return true;
+    else
+      this.router.navigate(['/login']);
+    return false;
+
   }
 
-login(){
-  this.authService.login();
-  this.authenticated = this.authService.isAuthenticated()
+  showContent(){
 
-}
+    if (localStorage.getItem('token') != null)
+    localStorage.loggedin
+
+  }
 
 }

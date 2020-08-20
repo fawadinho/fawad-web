@@ -1,3 +1,4 @@
+import { NavbarComponent } from './navbar/navbar.component';
 import { AuthGuard } from './auth/auth.guard';
 import { DocuComponent } from './docu/docu.component';
 import { RegistrationComponent } from './user/registration/registration.component';
@@ -16,6 +17,7 @@ import { SupplierOrderComponent } from './supplier-orders/supplier-order/supplie
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'navbar', component: NavbarComponent,  canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },

@@ -1,3 +1,4 @@
+import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserService } from './shared/user.service';
 import { OrderService } from './shared/order.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './user/login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { OrdersComponent } from './orders/orders.component';
 import { OrderComponent } from './orders/order/order.component';
 import { OrderproductsComponent } from './orders/order-products/order-products.component';
@@ -55,7 +56,11 @@ import { DocuComponent } from './docu/docu.component';
     MatCurrencyFormatModule,
     ToastrModule.forRoot(),
   ],
-  providers: [UserService],
+  providers: [UserService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
 
   entryComponents: [OrderproductsComponent],
   bootstrap: [AppComponent],

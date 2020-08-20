@@ -4,7 +4,7 @@
       <img src="../../assets/mis-logo.png" width="132" height="28" />
     </a>
 
-  
+
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
@@ -24,7 +24,7 @@
         View Inventory
       </a>
 
-      <a class="navbar-item" routerLink="docu" >
+      <a class="navbar-item" routerLink="docu" routerLinkActive="active">
         Documentation
       </a>
     </div>
@@ -32,20 +32,20 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a class="button bg-primary text-white " routerLink="/user/registration">
-            <a>Sign up</a>
+        <div class="buttons" *ngIf="!userDetails">
+
+          <a class="button bg-primary text-white " routerLink="user/registration" >
+
+            <a>Sign Up</a>
           </a>
 
-
-          <a class="button is-light"  (click)="onLogout()">
+          <a class="button is-light" (click)="onLogout()">
             Logout
           </a>
-
-
-
-
         </div>
+
+
+
       </div>
     </div>
   </div>
